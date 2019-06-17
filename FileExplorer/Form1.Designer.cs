@@ -32,14 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnExit = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnBack = new System.Windows.Forms.Label();
+            this.toolBar = new System.Windows.Forms.Panel();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
-            this.panel1.SuspendLayout();
+            this.toolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -65,50 +65,24 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "FileExplorer";
             // 
-            // panel1
+            // toolBar
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.toolBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.btnOpen);
-            this.panel1.Controls.Add(this.btnBack);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(912, 106);
-            this.panel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Crimson;
-            this.panel2.Location = new System.Drawing.Point(0, 66);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 10);
-            this.panel2.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(43, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(788, 24);
-            this.textBox1.TabIndex = 2;
-            // 
-            // btnBack
-            // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(3, 79);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(34, 25);
-            this.btnBack.TabIndex = 11;
-            this.btnBack.Text = "<<";
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.toolBar.BackColor = System.Drawing.Color.Black;
+            this.toolBar.Controls.Add(this.btnOpen);
+            this.toolBar.Controls.Add(this.btnBack);
+            this.toolBar.Controls.Add(this.textBox1);
+            this.toolBar.Controls.Add(this.panel2);
+            this.toolBar.Controls.Add(this.label2);
+            this.toolBar.Controls.Add(this.btnExit);
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(912, 106);
+            this.toolBar.TabIndex = 1;
+            this.toolBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolBar_MouseDown);
+            this.toolBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.toolBar_MouseMove);
+            this.toolBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolBar_MouseUp);
             // 
             // btnOpen
             // 
@@ -123,6 +97,35 @@
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = false;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(3, 79);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(34, 25);
+            this.btnBack.TabIndex = 11;
+            this.btnBack.Text = "<<";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(43, 79);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(788, 24);
+            this.textBox1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Crimson;
+            this.panel2.Location = new System.Drawing.Point(0, 66);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(912, 10);
+            this.panel2.TabIndex = 2;
             // 
             // imageList1
             // 
@@ -152,13 +155,13 @@
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(912, 479);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -167,7 +170,7 @@
 
         private System.Windows.Forms.Label btnExit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel toolBar;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label btnBack;
         private System.Windows.Forms.TextBox textBox1;

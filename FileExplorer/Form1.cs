@@ -16,6 +16,7 @@ namespace FileExplorer
     {
         private string path;
         private string openPath;
+        private string checkPath;
 
         public Form1()
         {
@@ -47,18 +48,8 @@ namespace FileExplorer
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e) 
         {
-            if (Directory.Exists(openPath))
-            {
-                path = openPath;
-                listView1.Clear();
-                ShowFiles();
-            }
-            else if (File.Exists(openPath))
-            {
-                Process.Start(openPath);
-
-            }
-            else { MessageBox.Show("File extention unknown."); }
+            checkPath = openPath;
+            CheckDirectories();
         }
 
         
@@ -72,13 +63,8 @@ namespace FileExplorer
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            path = textBox1.Text;
-            if (Directory.Exists(path))
-            {  
-                listView1.Clear();
-                ShowFiles();
-            }
-            else { MessageBox.Show("Path does not exist or it is a file."); }
+            checkPath = textBox1.Text;
+            CheckDirectories();
         }
 
         private void ShowFiles()
@@ -92,6 +78,45 @@ namespace FileExplorer
             {
                 listView1.Items.Add(Path.GetFileName(i), imageList1.Images.Count - 1);
             }
+        }
+        private void CheckDirectories()
+        {
+            if (Directory.Exists(checkPath))
+            {
+                path = checkPath;
+                listView1.Clear();
+                ShowFiles();
+            }
+            else if (File.Exists(checkPath))
+            {
+                Process.Start(checkPath);
+
+            }
+            else { MessageBox.Show("File extention unknown."); }
+        }
+
+        private bool mouseDown;
+        private Point lastLocation;
+
+        private void toolBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void toolBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void toolBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
+
         }
     }
 }

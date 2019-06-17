@@ -30,7 +30,8 @@ namespace Toolbox
 
         private void btnTool2_Click(object sender, EventArgs e)
         {
-
+            Form Calc = new Calculator.Form1();
+            Calc.Show();
         }
 
         private void btnTool3_Click(object sender, EventArgs e)
@@ -66,6 +67,30 @@ namespace Toolbox
         private void btnExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
+        }
+
+        private bool mouseDown;
+        private Point lastLocation;
+
+        private void toolBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void toolBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void toolBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
+
         }
     }
 }
