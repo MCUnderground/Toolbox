@@ -41,10 +41,12 @@ namespace Calculator
             Button button = (Button)sender;
             if (resultValue != 0)
             {
-                btnEquals.PerformClick();
+                CheckOperation();
+                resultValue = Double.Parse(numberHolder.Text);
                 operationPerformed = button.Text;
                 txtStored.Text = resultValue + " " + operationPerformed;
                 isPerformed = true;
+                
             }
             else { 
                 operationPerformed = button.Text;
@@ -92,6 +94,16 @@ namespace Calculator
         }
         private void btnEquals_Click(object sender, EventArgs e)
         {
+            CheckOperation();
+            resultValue = 0;
+            txtStored.Text = "";
+        }
+
+        private bool mouseDown;
+        private Point lastLocation;
+
+        private void CheckOperation()
+        {
             switch (operationPerformed)
             {
                 case "+":
@@ -110,12 +122,8 @@ namespace Calculator
                     break;
 
             }
-            resultValue = Double.Parse(numberHolder.Text);
-            txtStored.Text = "";
-        }
 
-        private bool mouseDown;
-        private Point lastLocation;
+        }
 
         private void toolBar_MouseDown(object sender, MouseEventArgs e)
         {
